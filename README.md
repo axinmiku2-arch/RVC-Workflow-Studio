@@ -1,6 +1,6 @@
-# RVC Workflow Studio（暂定名）
+# RVC Workflow Studio
 
-这是基于 [RVC](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI) 的独立增强版，集成训练向导和歌曲分离、音色转换、效果与合成工作流。上游 RVC 本身已有训练、转换和分离能力；本项目侧重让这些操作更连贯。**目前仍处于发布准备阶段，干净安装及第三方资源分发条件尚未完成验证。**
+这是基于 [RVC](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI) 的独立增强版，集成训练向导和歌曲分离、音色转换、效果与合成工作流。上游 RVC 本身已有训练、转换和分离能力；本项目侧重让这些操作更连贯。
 
 常用入口：Windows 整合包双击 `go-webui.bat`；也可使用 `go-training-wizard.bat` 或 `go-separation-wizard.bat`。详见 [项目状态](PROJECT_STATUS.md)、[安装说明](docs/INSTALLATION.md)、[功能清单](docs/FEATURE_INVENTORY.md) 和 [English](README_EN.md)。以下保留原项目介绍及现有说明。
 
@@ -11,7 +11,7 @@
 3. 双击 `go-separation-wizard.bat` 打开分离向导，导入音频或视频，选取处理功能，试听后再处理和导出。详见 [分离向导](docs/separation-wizard.html)。
 4. 使用 `go-webui.bat` 进入原 WebUI；单次推理可按需串联分离、音色转换、效果和伴奏合成。详见 [歌曲处理](docs/conversion-pipeline.html) 与 [音乐导入](docs/music-import.html)。
 
-本项目仍在准备发布，干净安装、真实模型推理、其他平台及所有输入格式尚未全面验收。音频处理效果受素材和模型影响，请试听后选择结果。遇到缺少模型、工具、显存不足或任务中断时，参见 [常见问题](docs/TROUBLESHOOTING.md)。默认仅在本机监听，局域网访问需自行处理网络隔离。
+音频处理效果受素材和模型影响，请试听后选择结果。遇到缺少模型、工具、显存不足或任务中断时，参见 [常见问题](docs/TROUBLESHOOTING.md)。默认仅在本机监听，局域网访问需自行处理网络隔离。
 
 增强页面截图将在隐私审查后补充；下方截图来自上游项目，不代表本增强版当前界面。
 
