@@ -2,6 +2,22 @@
 
 这是基于 [RVC](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI) 的独立增强版，集成训练向导和歌曲分离、音色转换、效果与合成工作流。上游 RVC 本身已有训练、转换和分离能力；本项目侧重让这些操作更连贯。
 
+## 相比原版有哪些改进？
+
+| 改进 | 使用体验 |
+| --- | --- |
+| **一键训练向导** | 导入干声后，按页面步骤完成素材检查、参数设置、训练和索引生成；查看进度与日志，完成后试听并导出模型。支持从已完成的阶段继续。 |
+| **一键音频分离** | 导入音频或视频，按需选择人声与伴奏分离、去和声、去混响和降噪；先试处理一小段，再处理整首、试听并导出。 |
+| **转换前自动处理** | 在原 WebUI 的单次推理页面勾选分离，点击转换即可依次处理人声分离、清理和音色转换；原有变调、音高和索引参数仍可使用。 |
+| **人声效果与歌曲合成** | 保留转换干声，按需添加人声效果并混合伴奏；可调整人声与伴奏音量、伴奏调性，分别试听和导出结果。 |
+| **减少重复等待** | 处理过程保留阶段结果；调整效果或混音时可只更新后处理，训练和分离任务也可以查看进度并继续。 |
+
+上游 RVC 已提供训练、推理和音源分离功能；这些改进把常用操作整合到更连贯的页面流程中。
+
+## 下载与安装
+
+从 [发行版页面](https://github.com/axinmiku2-arch/RVC-Workflow-Studio/releases) 下载源码包并解压，按 [Windows 安装说明](docs/INSTALLATION.md) 准备 Python、依赖、FFmpeg 和模型。完成后双击 `go-webui.bat`，或直接打开训练、分离向导。
+
 常用入口：Windows 整合包双击 `go-webui.bat`；也可使用 `go-training-wizard.bat` 或 `go-separation-wizard.bat`。详见 [项目状态](PROJECT_STATUS.md)、[安装说明](docs/INSTALLATION.md)、[功能清单](docs/FEATURE_INVENTORY.md) 和 [English](README_EN.md)。以下保留原项目介绍及现有说明。
 
 ## 增强工作流快速上手
