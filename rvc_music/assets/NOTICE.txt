@@ -1,0 +1,6 @@
+Unlock Music browser worker from Adcage/unlock-music, commit eb61b9ee1963b0aa731e71d066b31602cec67273
+Originally based on Unlock Music (https://git.unlock-music.dev/um/web).
+Packaged code is retained unchanged; see LICENSE.
+The RVC adapter disables remote key queries, artwork requests and usage reporting.
+patched.worker.js adds defaults for missing NCM metadata, artist and cover fields.
+The original pinned worker is also retained for comparison.

@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/adcage/unlock-music",
+  "commit": "eb61b9ee1963b0aa731e71d066b31602cec67273",
+  "worker": "unlock-music.worker.js",
+  "sha256": "818887f48394daa22c4552e313cd88efa72f1f23d5a2be89e28590659c3adac0",
+  "network": "local-only; external fetch disabled by adapter",
+  "patched_worker": "patched.worker.js",
+  "patched_sha256": "a9c036816051da13465c4df25702b6faae5a5a2c278c8def236ade64bbd1460f",
+  "patches": [
+    "if(r+=4,0===n)return{};",
+    "c.artist.forEach",
+    "s.albumPic=s.albumPic.replace"
+  ]
+}

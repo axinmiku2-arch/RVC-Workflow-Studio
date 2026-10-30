@@ -1,0 +1,46 @@
+name: Source checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  syntax:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse workflow modules
+        shell: bash
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          paths = [p for name in ('rvc_wizard', 'rvc_conversion', 'rvc_separation', 'rvc_music') for p in Path(name).glob('*.py')]
+          if not paths:
+              raise SystemExit('No workflow modules found')
+          for path in paths:
+              ast.parse(path.read_text(encoding='utf-8-sig'), filename=str(path))
+          print(f'Parsed {len(paths)} Python files')
+          PY
+      - name: Verify isolated source checkout imports
+        run: python -m unittest discover -s tests -p test_release_environment.py -v
+      - name: Verify WebUI listen configuration
+        run: python -m unittest discover -s tests -p test_webui_network.py -v
+      - name: Install lightweight audio test dependencies
+        run: python -m pip install numpy==1.26.4 scipy==1.13.1 soundfile==0.13.1
+      - name: Check audio and parameter behavior (CPU)
+        env:
+          PYTHONPATH: tests
+        run: >-
+          python -m unittest -v
+          test_conversion_pipeline.ConversionTests.test_integer_conversion_and_mono
+          test_conversion_pipeline.ConversionTests.test_invalid_values_rejected
+          test_conversion_pipeline.ConversionTests.test_settings_dependencies
+          test_conversion_pipeline.ConversionTests.test_follow_pitch
+          test_conversion_pipeline.ConversionTests.test_zero_strength_exact_bypass
+          test_conversion_pipeline.ConversionTests.test_mix_peak_and_stereo
