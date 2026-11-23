@@ -15,7 +15,9 @@ def main():
     # Python 3.12 may decode .pth files using the Windows locale. An ASCII
     # representation keeps project paths containing other languages intact.
     target.write_text("import sys; sys.path.insert(0, " + ascii(str(root)) + ")\n", encoding="ascii")
-    print(f"Registered project directory in {target}")
+    # Redirected Windows stdout can still use a legacy code page. Reporting the
+    # full Unicode path here can fail after the .pth file has been written.
+    print(f"Registered project directory in {target.name}")
 
 
 if __name__ == "__main__":
